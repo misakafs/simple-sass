@@ -1,0 +1,29 @@
+{
+  "name": "simple-sass",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "fmt": "prettier --write ./**/*.scss",
+    "build-1": "rimraf dist && mkdir dist",
+    "build-2": "sass ./src/index.scss | postcss --no-map --use autoprefixer > ./dist/index.css",
+    "build-3": "sass --style=compressed --no-source-map ./src/index.scss | postcss --no-map --use autoprefixer > ./dist/index.min.css",
+    "build-4": "node ./scripts/copy.js",
+    "build": "yarn build-1 && yarn build-2 && yarn build-3 && yarn build-4"
+  },
+  "files": ["dist"],
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "fs-extra": "^10.0.0",
+    "globby": "^11.0.3",
+    "postcss": "^8.2.15",
+    "postcss-cli": "^8.3.1",
+    "prettier": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.32.13"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 4 versions"
+  ]
+}
